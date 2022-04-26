@@ -94,7 +94,7 @@ fieldset{
 }
 img{
     width: 100%;
-    height: auto;
+    
 }
 
 
@@ -338,7 +338,7 @@ button {
   background-color: #2595c5;
   color: white;
   padding: 14px 20px;
-  margin: 7px 0;
+  margin: 1px 0;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -397,8 +397,8 @@ div.a {
 
 
   td {
-    width: 500px;
-    border: solid 5px #2595c5;
+    width: 700px;
+    border: solid 0px #2595c5;
     height: 100%;
   }
   td a {
@@ -435,6 +435,13 @@ div.a {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
+
+
+  
+
+
+  
+
   
   /* Modal Content */
   .modal-content {
@@ -442,9 +449,12 @@ div.a {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 30%;
   }
   
+
+
+
   /* The Close Button */
   .close {
     color: #aaaaaa;
@@ -459,3 +469,6 @@ div.a {
     text-decoration: none;
     cursor: pointer;
   }
+
+
+ 
