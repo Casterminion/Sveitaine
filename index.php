@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+include("connection.php");
+include("functions.php");
+
+$user_data = check_login($con);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +23,15 @@
 
     
 </head>
-
 <body>
+
+
+
+
+<br>
+
+
+
     <!-- Navbar Section Starts Here -->
     <section class="navbar">
         <div class="container">
@@ -23,12 +41,10 @@
                 </a>
             </div>
 
+      
     
-            <div class="menu text-left">
+            <div class="menu text-left" style=" width: 1100px; margin: auto;">
                 <ul>
-                    <li>
-                        <a href="prisijungimas.html">Prisijunk</a>
-                    </li>
                     <li>
                         <a href="Paslaugos.html">Paslaugos</a>
                     </li>
@@ -38,6 +54,11 @@
                     <li>
                         <a href="Pagalba.html">Pagalba</a>
                     </li>
+                    <li>
+                        <a href="logout.php">Logout</a>
+                    </li>
+                    <li>Hello, <?php echo $user_data['Vardas']; ?></li>
+                    
                 </ul>
             </div>
     
