@@ -25,14 +25,39 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             {
     
                 $user_data = mysqli_fetch_assoc($result);
-                
-                if($user_data['Slaptazodis'] === $Slaptazodis)
-                {
+
+                                
+                // if($user_data['Slaptazodis'] === $Slaptazodis)
+                // {
+                //     $_SESSION['Registration_ID'] = $user_data['Registration_ID'];
+                //     header("Location: index.php");
+                //     die;
+            
+
+                // }
+                if($user_data["usertype"]==="user")
+                {	
+
                     $_SESSION['Registration_ID'] = $user_data['Registration_ID'];
                     header("Location: index.php");
                     die;
-            
                 }
+
+                elseif($user_data["usertype"]==="admin")
+                {
+
+                    $_SESSION['Registration_ID'] = $user_data['Registration_ID'];
+                    header("Location: Admin.php");
+                    die;
+                }
+
+
+
+
+
+
+                
+    
             }
         }
         echo "Wrong number or password";

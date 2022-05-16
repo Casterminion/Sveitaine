@@ -7,8 +7,8 @@ include("functions.php");
 $user_data = check_login($con);
 
 //DIsplay
-$tableName="planas";
-$columns= ['Planas_ID','Paslaugos','Pavadinimas','Kaina'];
+$tableName="telefonų_remontas";
+$columns= ['Telefonų_remontas_ID', 'Paslaugos','Remonto_pavadinimas','Kaina'];
 $fetchData = fetch_data($con, $tableName, $columns);
 
 function fetch_data($con, $tableName, $columns){
@@ -21,7 +21,7 @@ function fetch_data($con, $tableName, $columns){
 }else{
 
 $columnName = implode(", ", $columns);
-$query = "SELECT ".$columnName." FROM $tableName";
+$query = "SELECT ".$columnName." FROM $tableName"." ORDER BY Telefonų_remontas_ID DESC";
 $result = $con->query($query);
 
 if($result== true){ 
@@ -110,7 +110,7 @@ return $msg;
     <?php echo $deleteMsg??''; ?>
     <div class="table-responsive">
       <table class="table table-bordered" style=" border-collapse: collapse;">
-         <th>Pavadinimas</th>
+         <th>Remonto_pavadinimas</th>
          <th>Kaina</th>
     </thead>
     <tbody>
@@ -120,7 +120,7 @@ return $msg;
       foreach($fetchData as $data){
     ?>
       <tr>
-      <td><?php echo $data['Pavadinimas']??''; ?></td>
+      <td><?php echo $data['Remonto_pavadinimas']??''; ?></td>
       <td><?php echo $data['Kaina']??''; ?></td>
      </tr>
      <?php

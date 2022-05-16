@@ -7,8 +7,8 @@ include("functions.php");
 $user_data = check_login($con);
 
 //DIsplay
-$tableName="planas";
-$columns= ['Planas_ID','Paslaugos','Pavadinimas','Kaina'];
+$tableName="panaudoti_telefonai";
+$columns= ['Panaudoti_telefonai_id','Paslaugos','Telefono_pavadinimas','Kaina_pirkimo','Kaina_pardavimo'];
 $fetchData = fetch_data($con, $tableName, $columns);
 
 function fetch_data($con, $tableName, $columns){
@@ -110,7 +110,7 @@ return $msg;
     <?php echo $deleteMsg??''; ?>
     <div class="table-responsive">
       <table class="table table-bordered" style=" border-collapse: collapse;">
-         <th>Pavadinimas</th>
+         <th>Telefono pavadinimas</th>
          <th>Kaina</th>
     </thead>
     <tbody>
@@ -120,8 +120,8 @@ return $msg;
       foreach($fetchData as $data){
     ?>
       <tr>
-      <td><?php echo $data['Pavadinimas']??''; ?></td>
-      <td><?php echo $data['Kaina']??''; ?></td>
+      <td><?php echo $data['Telefono_pavadinimas']??''; ?></td>
+      <td><?php echo $data['Kaina_pardavimo']??''; ?></td>
      </tr>
      <?php
       $sn++;}}else{ ?>

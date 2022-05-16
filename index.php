@@ -6,6 +6,8 @@ include("functions.php");
 
 $user_data = check_login($con);
 
+
+
 ?>
 
 
@@ -37,27 +39,27 @@ $user_data = check_login($con);
         <div class="container">
             <div class="logo">
                 <a href="#" title="Logo">
-                    <a href="index.html"><img src="logo.png" alt="HTML tutorial" style="width:150px;height: 150px;"></a>
+                    <a href="index.php"><img src="logo.png" alt="HTML tutorial" style="width:150px;height: 150px;"></a>
                 </a>
             </div>
 
       
     
-            <div class="menu text-left" style=" width: 1100px; margin: auto;">
+            <div class="menu text-left" style=" width: 1300px; margin: auto;">
                 <ul>
                     <li>
-                        <a href="Paslaugos.html">Paslaugos</a>
+                        <a href="panaudoti_telefonai.php">Panaudoti telefonai</a>
                     </li>
                     <li>
-                        <a href="Planai.html">Planai</a>
+                        <a href="planai.php">Planai</a>
                     </li>
                     <li>
-                        <a href="Pagalba.html">Pagalba</a>
+                        <a href="telefonų_remontas.php">Telefonų remontas</a>
                     </li>
                     <li>
                         <a href="logout.php">Logout</a>
                     </li>
-                    <li>Hello, <?php echo $user_data['Vardas']; ?></li>
+                    <li>Sveiki, <?php echo $user_data['Vardas']; ?></li>
                     
                 </ul>
             </div>
