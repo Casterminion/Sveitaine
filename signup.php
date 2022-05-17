@@ -1,5 +1,22 @@
 <?php
+
+require __DIR__.'/PHPMailer/src/Exception.php';
+require __DIR__.'/PHPMailer/src/PHPMailer.php';
+require __DIR__.'/PHPMailer/src/SMTP.php';
+
+# use "use" after include or require
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require __DIR__.'/vendor\autoload.php';
+
+$mail = new PHPMailer(true);
+
+
 session_start();
+
 
     include("connection.php");
     include("functions.php");
@@ -12,20 +29,50 @@ session_start();
         $Pavardė = $_POST['Pavardė'];
         $Telefono_numeris = $_POST['Telefono_numeris'];
         $El_paštas = $_POST['El_paštas'];
-        $Slaptazodis = $_POST['Slaptazodis'];
+        $hashToStoreInDb = password_hash($_POST['Slaptazodis'], PASSWORD_DEFAULT);
 
-        if(!empty($Vardas) && !empty($Pavardė) && !empty($Telefono_numeris) && !empty($El_paštas) && !empty($Slaptazodis) && 
+
+
+
+        if(!empty($Vardas) && !empty($Pavardė) && !empty($Telefono_numeris) && !empty($El_paštas) && !empty($hashToStoreInDb) && 
         !is_numeric($Vardas) && !is_numeric($Pavardė) && is_numeric($Telefono_numeris))
         {
 
             //save to database
             $Registration_ID = random_num(20);
-            $query = "insert into registracija ( Registration_ID, Vardas, Pavardė, Telefono_numeris, El_paštas, Slaptazodis) values ( '$Registration_ID','$Vardas' , '$Pavardė' ,'$Telefono_numeris','$El_paštas' ,'$Slaptazodis')";
+            $query = "insert into registracija ( Registration_ID, Vardas, Pavardė, Telefono_numeris, El_paštas, Slaptazodis) values ( '$Registration_ID','$Vardas' , '$Pavardė' ,'$Telefono_numeris','$El_paštas' ,'$hashToStoreInDb')";
             
             mysqli_query($con, $query);
 
-            header("Location: login.php");
+            
+            
+
+
+//Server settings
+$mail->SMTPDebug = 0;                      //Enable verbose debug output
+$mail->isSMTP();                                            //Send using SMTP
+$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+$mail->Username   = 'arturasssxvccx@gmail.com';                     //SMTP username
+$mail->Password   = 'arturasssxvccx123';                               //SMTP password
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+//Recipients
+$mail->setFrom('arturasssxvccx@gmail.com', 'arturasssxvccx@gmail.com');
+$mail->addAddress($El_paštas, $Vardas);     //Add a recipient        
+
+//Content
+$mail->isHTML(true);                                  //Set email format to HTML
+$mail->Subject = 'Sveiki Prisijunge prie MPI';
+$mail->Body    = '<H1><b>Registracija sekminga</b></H1>';
+$mail->AltBody = 'Registracija sekminga';
+
+$mail->send();
+header("Location: login.php");
+ 
             die;
+
 
         }
         else
@@ -82,7 +129,7 @@ session_start();
 
 
 
-            <button id="button" type="submit" value="Login">Registruotis</button><br><br>
+            <button id="button" type="submit" value="register" name="register">Registruotis</button><br><br>
 
             <a href="login.php">Turite prisijungimą?</a><br><br>
            

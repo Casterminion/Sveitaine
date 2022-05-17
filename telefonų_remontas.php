@@ -52,7 +52,11 @@ return $msg;
     <!-- Link our CSS file -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
     
 </head>
 <body>
@@ -103,44 +107,53 @@ return $msg;
     </div>
     <!-- Navbar Section Ends Here -->
 
+    <!--paieska-->
+  
 
-<div class="container">
- <div class="row">
-   <div class="col-sm-8">
-    <?php echo $deleteMsg??''; ?>
-    <div class="table-responsive">
-      <table class="table table-bordered" style=" border-collapse: collapse;">
-         <th>Remonto_pavadinimas</th>
-         <th>Kaina</th>
-    </thead>
-    <tbody>
-  <?php
-      if(is_array($fetchData)){      
-      $sn=1;
-      foreach($fetchData as $data){
-    ?>
-      <tr>
-      <td><?php echo $data['Remonto_pavadinimas']??''; ?></td>
-      <td><?php echo $data['Kaina']??''; ?></td>
-     </tr>
-     <?php
-      $sn++;}}else{ ?>
-      <tr>
-        <td colspan="8">
-    <?php echo $fetchData; ?>
-  </td>
-    <tr>
-    <?php
-    }?>
-    </tbody>
-     </table>
+    <div class="container">
+    <div class="input-group">
+     <input type="text" name="search_text" id="search_text" placeholder="Paieška" class="form-control" />
+    </div>
    </div>
-</div>
-</div>
-</div>
+   <br />
+   <div id="result"></div>
+  </div>
 
+  <script>
+$(document).ready(function(){
 
+ load_data();
 
+ function load_data(query)
+ {
+  $.ajax({
+   url:"telefonuRemontasPaieska.php",
+   method:"POST",
+   data:{query:query},
+   success:function(data)
+   {
+    $('#result').html(data);
+   }
+  });
+ }
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
 <article class="browser">
     <h2 style="color:rgb(255, 255, 255)">Microsoft Edge</h2>
   </article>
@@ -153,3 +166,11 @@ return $msg;
 </footer>
     </body>
     </html>
+
+
+
+
+
+
+
+

@@ -11,6 +11,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     $Telefono_numeris = $_POST['Telefono_numeris'];
     $Slaptazodis = $_POST['Slaptazodis'];
 
+   
+
+    
     if(!empty($Telefono_numeris) && !empty($Slaptazodis) &&  is_numeric($Telefono_numeris))
     {
 
@@ -69,7 +72,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 }
 
 
+    // echo "test123";
+    // echo "<br>";
+    // echo password_hash("test123", PASSWORD_DEFAULT);
+
+
+    // $input = "test123";
+    // $hashedPwdInDb = password_hash("test123", PASSWORD_DEFAULT);
+
+    // echo password_verify($input, $hashedPwdInDb);
 ?>
+
 
 
 

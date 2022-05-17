@@ -52,7 +52,7 @@ return $msg;
     <!-- Link our CSS file -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     
 </head>
 <body>
@@ -66,30 +66,40 @@ return $msg;
 
     <!-- Navbar Section Starts Here -->
     <section class="navbar">
-        <div class="container1">
+        <div class="container" >
             <div class="logo">
                 <a href="#" title="Logo">
-                    <a href="index.php"><img src="logo.png" alt="HTML tutorial" style="width:150px;height: 150px;"></a>
+                    <a href="admin.php"><img src="logo.png" alt="HTML tutorial" style="width:150px;height: 150px;"></a>
                 </a>
             </div>
 
       
     
-            <div class="menu text-left" style=" width: 1500px; margin: auto; color:black;">
+            <div class="menu text-left" style=" width: 1400px; margin: auto;  position: absolute;top: 100px;right: 500px;">
                 <ul>
                     <li>
-                        <a href="panaudoti_telefonai.php" style="color:black;">Panaudoti telefonai</a>
+                        <a href="ADMINpanaudotiTelefonai.php">Panaudoti telefonai</a>
                     </li>
                     <li>
-                        <a href="planai.php"style="color:black;">Planai</a>
+                        <a href="ADMINpaslaugos.php">Paslaugos</a>
                     </li>
                     <li>
-                        <a href="telefonų_remontas.php"style="color:black;">Telefonų remontas</a>
+                        <a href="ADMINplanas.php">Planai</a>
                     </li>
                     <li>
-                        <a href="logout.php" style="color:black;">Logout</a>
+                        <a href="ADMINprocesai.php">Procesai</a>
                     </li>
-                    <li>Sveiki, <?php echo $user_data['Vardas']; ?></li>
+                    <li>
+                        <a href="ADMINregistracija.php">Vartotojų sarašas</a>
+                    </li>
+                    <li>
+                        <a href="ADMINtelefonuRemontas.php">Telefonų remontas</a>
+                    </li>
+                    <li>
+                        <a href="logout.php">Logout</a>
+                    </li>
+                    <li style=" position: absolute;top: -80px;right: -410px;">Sveiki, <?php echo $user_data['Vardas']; ?></li>
+                    
                     
                 </ul>
             </div>
@@ -99,46 +109,35 @@ return $msg;
     </section>
     <hr>
     <div class="image1">
-        <img  src="background1.jpg" width="500" height="400">
+        <img  src="background1.jpg" width="460" height="345">>
     </div>
     <!-- Navbar Section Ends Here -->
 
 
-<div class="container">
- <div class="row">
-   <div class="col-sm-8">
-    <?php echo $deleteMsg??''; ?>
-    <div class="table-responsive">
-      <table class="table table-bordered" style=" border-collapse: collapse;">
-         <th>Remonto_pavadinimas</th>
-         <th>Kaina</th>
-    </thead>
-    <tbody>
-  <?php
-      if(is_array($fetchData)){      
-      $sn=1;
-      foreach($fetchData as $data){
-    ?>
-      <tr>
-      <td><?php echo $data['Remonto_pavadinimas']??''; ?></td>
-      <td><?php echo $data['Kaina']??''; ?></td>
-     </tr>
-     <?php
-      $sn++;}}else{ ?>
-      <tr>
-        <td colspan="8">
-    <?php echo $fetchData; ?>
-  </td>
-    <tr>
-    <?php
-    }?>
-    </tbody>
-     </table>
-   </div>
-</div>
-</div>
-</div>
+<div>
+    <img src="back.png" alt="">
+    <div class="header">
+        <h2 style="text-align: center;text-align: center; font-size: 60px;">Sveiki atvyke į MPI!</h2>
+    </div>
+    <br>
 
+  
+
+      <!--Header section-->
+<div class="header-section">
+	<!--Navigation section-->
+	<ul class="navigation">
+        <h2 >Taigi kas gi yra MPI?</h2>
+        <br>
+        <div><p style="text-align: left;font-size: 30px;">     MPI tai mobiliųjų paslaugų įmonė, suteikianti ne tik įvairias <br>paslaugas kaip sąskaitos papildimas, telefonų 
+            remontas,<br> bet taip pat ir superka senus telfonus sažiningomis kainomis, <br>bei suteikia galimybę įsigyti įvairiausių planų kurie neturi  galiojimo <br>laiko</p>      
+            </div>
+	</ul>
+	<!--Social Icons-->
+	<img src="intro.jpg">
+</div>
+</div>
+<br>
 
 
 <article class="browser">
