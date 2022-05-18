@@ -137,7 +137,7 @@ $(document).ready(function(){
  function load_data(query)
  {
   $.ajax({
-   url:"adminTelefonuRemontasPaieska.php",
+   url:"adminRegistracijaPaieska.php",
    method:"POST",
    data:{query:query},
    success:function(data)
